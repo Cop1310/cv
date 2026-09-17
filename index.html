@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>César Ortiz Pérez — Ingeniero de I+D · Luminarias LED</title>
+<meta name="description" content="César Ortiz Pérez. Ingeniero de I+D especializado en el desarrollo de luminarias LED made in Spain: diseño mecánico, térmico y fotométrico.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --surround:#E9EDF2;
+    --sheet-shadow:rgba(22,32,46,.14);
+  }
+  :root[data-theme="dark"]{ --surround:#0C1219; --sheet-shadow:rgba(0,0,0,.55); }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){ --surround:#0C1219; --sheet-shadow:rgba(0,0,0,.55); }
+  }
+
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background:var(--surround);
+    font-family:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color:#16202E;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    padding:40px 20px 96px;
+    display:flex;
+    justify-content:center;
+    animation:fade .45s ease both;
+  }
+  @keyframes fade{ from{opacity:0} to{opacity:1} }
+  @media (prefers-reduced-motion: reduce){ body{ animation:none; } }
+
+  /* ---- The document sheet (always light, so it reads as a real CV in any viewer) ---- */
+  .sheet{
+    width:100%;
+    max-width:880px;
+    background:#ffffff;
+    color:#16202E;
+    display:grid;
+    grid-template-columns:14px 1fr;
+    box-shadow:0 1px 2px var(--sheet-shadow), 0 18px 50px -18px var(--sheet-shadow);
+    border-radius:3px;
+    overflow:hidden;
+  }
+  /* Signature element: the CCT spectrum, warm 2700 K at top → cool 6500 K at foot */
+  .spectrum{
+    background:linear-gradient(180deg,
+      #FF9A45 0%, #FFB877 16%, #FFD6A6 32%, #FFEBCF 46%,
+      #FBF6EE 54%, #E7F0FB 66%, #C4DBF6 82%, #93C0EF 100%);
+  }
+  .content{ padding:44px 48px 48px; }
+
+  /* ---- Header ---- */
+  .name{
+    font-family:"Space Grotesk", sans-serif;
+    font-weight:700;
+    font-size:40px;
+    line-height:1.02;
+    letter-spacing:-.015em;
+    margin:0;
+    color:#12324B;
+  }
+  .role{
+    font-size:16px;
+    font-weight:500;
+    color:#44515F;
+    margin:8px 0 0;
+    letter-spacing:.005em;
+  }
+  .contact{
+    margin-top:16px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:0 16px;
+    font-size:13px;
+    color:#55606D;
+  }
+  .contact a{ color:#215E86; text-decoration:none; }
+  .contact a:hover{ text-decoration:underline; }
+  .contact span{ position:relative; padding-left:16px; }
+  .contact span:first-child{ padding-left:0; }
+  .contact span:not(:first-child)::before{
+    content:""; position:absolute; left:0; top:50%; transform:translateY(-50%);
+    width:1px; height:12px; background:#CBD3DD;
+  }
+
+  .rule{ height:1px; background:#E2E7EE; margin:26px 0 4px; }
+
+  /* ---- Two-column body ---- */
+  .grid{
+    display:grid;
+    grid-template-columns:1.65fr 1fr;
+    gap:0 40px;
+    margin-top:14px;
+  }
+  aside{ border-left:1px solid #EAEEF3; padding-left:32px; }
+
+  h2{
+    font-family:"Space Grotesk", sans-serif;
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:.005em;
+    color:#12324B;
+    margin:30px 0 12px;
+    padding-bottom:7px;
+    border-bottom:1px solid #E2E7EE;
+    position:relative;
+  }
+  h2:first-child, aside h2:first-child{ margin-top:2px; }
+  h2::after{
+    content:""; position:absolute; left:0; bottom:-1px;
+    width:34px; height:2px; background:#2C6E9B;
+  }
+
+  .lead{ font-size:14px; color:#2B3742; margin:0; line-height:1.62; text-align:justify; }
+
+  .job{ margin-bottom:16px; }
+  .job:last-child{ margin-bottom:0; }
+  .job-top{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
+  .company{ font-weight:600; font-size:14.5px; color:#182430; }
+  .dates{ font-size:12px; color:#6A7480; white-space:nowrap; font-variant-numeric:tabular-nums; }
+  .job-role{ font-size:13.5px; font-style:italic; color:#42505E; margin:1px 0 0; }
+  .job-place{ font-size:12px; color:#7A8592; margin:2px 0 8px; }
+
+  ul{ list-style:none; margin:0; padding:0; }
+  .duties li{
+    position:relative; padding-left:16px; margin-bottom:5px;
+    font-size:13.5px; color:#2E3A46; line-height:1.5;
+  }
+  .duties li::before{
+    content:""; position:absolute; left:0; top:8px;
+    width:5px; height:5px; background:#2C6E9B; border-radius:1px;
+  }
+
+  .skills li{
+    position:relative; padding-left:15px; margin-bottom:8px;
+    font-size:13px; color:#2E3A46; line-height:1.46;
+  }
+  .skills li::before{
+    content:""; position:absolute; left:0; top:7px;
+    width:4px; height:4px; background:#8FB0C8; border-radius:1px;
+  }
+  aside .block{ margin-bottom:6px; }
+
+  .edu li{ font-size:13px; color:#2E3A46; margin-bottom:7px; line-height:1.46; }
+  .edu .deg{ font-weight:600; color:#182430; }
+  .edu .sub{ color:#6A7480; font-size:12px; }
+
+  /* ---- Save-to-PDF control ---- */
+  .save{
+    position:fixed; right:22px; bottom:22px; z-index:5;
+    font-family:"IBM Plex Sans", sans-serif; font-size:13.5px; font-weight:500;
+    color:#fff; background:#12324B; border:none; border-radius:100px;
+    padding:11px 20px; cursor:pointer; letter-spacing:.01em;
+    box-shadow:0 6px 20px -6px rgba(18,50,75,.6);
+    transition:background .15s ease, transform .1s ease;
+  }
+  .save:hover{ background:#1B4467; }
+  .save:active{ transform:translateY(1px); }
+  .save:focus-visible{ outline:2px solid #93C0EF; outline-offset:2px; }
+
+  /* ---- Responsive ---- */
+  @media (max-width:720px){
+    body{ padding:0 0 90px; }
+    .sheet{ grid-template-columns:1fr; border-radius:0; max-width:100%; }
+    .spectrum{ height:8px; }
+    .content{ padding:30px 24px 36px; }
+    .name{ font-size:32px; }
+    .grid{ grid-template-columns:1fr; gap:0; }
+    aside{ border-left:none; padding-left:0; border-top:1px solid #EAEEF3; margin-top:14px; }
+  }
+
+  /* ---- Print / Save as PDF ---- */
+  @media print{
+    @page{ margin:12mm; }
+    body{ background:#fff; padding:0; animation:none; }
+    .sheet{ box-shadow:none; max-width:100%; border-radius:0; }
+    .save{ display:none; }
+    .content{ padding:0 6px; }
+    aside{ border-left:1px solid #EAEEF3; }
+  }
+</style>
+</head>
+<body>
+  <main class="sheet">
+    <div class="spectrum" aria-hidden="true"></div>
+    <div class="content">
+      <header>
+        <h1 class="name">César Ortiz Pérez</h1>
+        <p class="role">Ingeniero de I+D · Desarrollo de luminarias LED made in Spain</p>
+        <div class="contact">
+          <span>Madrid</span>
+          <span><a href="tel:+34669854121">669&nbsp;854&nbsp;121</a></span>
+          <span><a href="mailto:cop1310@hotmail.com">cop1310@hotmail.com</a></span>
+          <span><a href="https://www.linkedin.com/in/césar-ortiz-pérez-cop1310/" target="_blank" rel="noopener">LinkedIn</a></span>
+        </div>
+      </header>
+
+      <div class="rule"></div>
+
+      <div class="grid">
+        <!-- MAIN COLUMN -->
+        <section>
+          <h2>Perfil</h2>
+          <p class="lead">Ingeniero de desarrollo (I+D) con más de 20 años de experiencia en oficina técnica y diseño de producto, de los cuales más de 13 dedicados íntegramente al desarrollo de luminarias LED made in Spain. Lidero proyectos desde la definición del concepto hasta la industrialización: selección e integración de LED y drivers, diseño mecánico, térmico y fotométrico, interlocución técnica con fabricantes de componentes y proveedores de moldes e inyección, y estudio de costes. Trabajo con múltiples marcas de LED y de drivers y con proveedores industriales diversos, siempre orientado a producto profesional de alta exigencia técnica, documental y de calidad.</p>
+
+          <h2>Experiencia</h2>
+
+          <div class="job">
+            <div class="job-top">
+              <span class="company">Prilux Iluminación I+D</span>
+              <span class="dates">sep. 2016 — actualidad</span>
+            </div>
+            <p class="job-role">Ingeniero de I+D · Desarrollo de producto</p>
+            <p class="job-place">Toledo</p>
+            <ul class="duties">
+              <li>Liderazgo de proyectos de desarrollo de luminarias LED made in Spain, del concepto a la industrialización.</li>
+              <li>Selección e integración de LED (CREE, Lumileds, Nichia) y drivers de corriente constante (Tridonic, Signify, Osram, Inventronics).</li>
+              <li>Diseño mecánico, térmico (simulación CFD) y fotométrico de la luminaria.</li>
+              <li>Interlocución técnica con fabricantes de LED y de drivers, y con oficinas técnicas de moldes e inyección de plástico y aluminio.</li>
+              <li>Estudio y optimización de costes de producto.</li>
+              <li>Elaboración de documentación técnica de catálogo (metodología TDC).</li>
+              <li>Colaboración con laboratorio (LCOE) para la certificación de producto, y validación de luminarias conforme a los requisitos del IAC para la protección del cielo nocturno.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-top">
+              <span class="company">DLED Soluciones</span>
+              <span class="dates">may. 2012 — sep. 2016</span>
+            </div>
+            <p class="job-role">Ingeniero de I+D · Desarrollo de producto</p>
+            <p class="job-place">Ontígola (Toledo)</p>
+            <ul class="duties">
+              <li>Diseño y desarrollo de luminarias LED con funciones análogas a las posteriores en Prilux: liderazgo de proyectos, selección de componentes, diseño mecánico y estudio de costes.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-top">
+              <span class="company">Mecarem S.A.</span>
+              <span class="dates">2005 — 2012</span>
+            </div>
+            <p class="job-role">Oficina Técnica</p>
+            <p class="job-place">Madrid</p>
+            <ul class="duties">
+              <li>Diseño y delineación de producto en chapa metálica (planos técnicos).</li>
+              <li>Programación CNC de máquinas de punzonado.</li>
+              <li>Elaboración de presupuestos.</li>
+              <li>Entorno de fabricación: punzonado, plegado y soldadura.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- SIDEBAR -->
+        <aside>
+          <h2>Competencias</h2>
+          <ul class="skills block">
+            <li>Diseño integral de luminarias LED para producto profesional made in Spain.</li>
+            <li>Selección e integración de LED: CREE, Lumileds, Nichia.</li>
+            <li>Drivers de corriente constante: Tridonic, Signify, Osram, Inventronics.</li>
+            <li>Diseño térmico por simulación CFD (disipación, derating).</li>
+            <li>Diseño fotométrico y cálculos de CCT y flujo.</li>
+            <li>Certificación, ensayos y cumplimiento normativo de producto.</li>
+            <li>Diseño orientado a fabricación: moldes, inyección de plástico y aluminio, chapa.</li>
+            <li>Estudio de costes e interlocución con proveedores industriales.</li>
+          </ul>
+
+          <h2>Herramientas</h2>
+          <ul class="skills block">
+            <li>SolidWorks — diseño mecánico 3D.</li>
+            <li>SolidWorks Flow Simulation — simulación térmica (CFD).</li>
+            <li>Excel (nivel avanzado) — cálculos, tablas de datos y herramientas de catálogo.</li>
+          </ul>
+
+          <h2>Formación</h2>
+          <ul class="edu">
+            <li><span class="deg">Técnico Superior en Desarrollo de Proyectos Mecánicos</span><br><span class="sub">FP de Grado Superior</span></li>
+            <li><span class="deg">Técnico Superior en Fabricación Mecánica</span><br><span class="sub">FP de Grado Superior</span></li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <button class="save" onclick="window.print()">Guardar en PDF</button>
+</body>
+</html>
